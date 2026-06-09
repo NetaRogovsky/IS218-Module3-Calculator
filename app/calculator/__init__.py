@@ -13,7 +13,7 @@ class Calculator:
     def __init__(self):
         self.operations = OPERATIONS
 
-    def get_number(self, prompt: str) -> float:
+    def get_number(self, prompt):
         while True:
             value = input(prompt).strip()
             try:
@@ -21,7 +21,7 @@ class Calculator:
             except ValueError:
                 print(f"  Invalid input '{value}'. Please enter a number.")
 
-    def get_operation(self) -> str:
+    def get_operation(self):
         valid = ", ".join(self.operations.keys())
         while True:
             op = input(f"Operation ({valid}) or 'quit' to exit: ").strip().lower()
@@ -31,7 +31,7 @@ class Calculator:
                 return op
             print(f"  Unknown operation '{op}'. Choose from: {valid}")
 
-    def calculate(self, operation: str, a: float, b: float) -> float:
+    def calculate(self, operation, a, b):
         op_class = self.operations[operation]
         return op_class.execute(a, b)
 
